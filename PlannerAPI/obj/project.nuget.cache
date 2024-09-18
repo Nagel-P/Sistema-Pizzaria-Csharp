@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yc9bWqwTwBdgPLPypNtnDLeeJGHjNL1tZkWhXhD3Ar+5eg3X9EzMM+Uxsf3DZnhXmngq5e6Tpf+fG7tElWbTvA==",
+  "dgSpecHash": "4sElcRTrgOY=",
   "success": true,
-  "projectFilePath": "D:\\bkp\\Documents\\Geral\\PROGRAMCAO\\C#\\Sistema-Pizzaria-Csharp\\PlannerAPI\\PlannerAPI.csproj",
+  "projectFilePath": "C:\\Engenharia de Software\\Sistema-Pizzaria-Csharp\\PlannerAPI\\PlannerAPI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
