@@ -3,12 +3,12 @@ namespace PlannerAPI
     public class Cliente
     {
         
-        public int Cpf { get; set; }
+        public string Cpf { get; set; }
         public string Nome { get; set; }
         public string Endereco { get; set; }
         public string Telefone { get; set; }
 
-        public Cliente(int cpf, string nome, string endereco, string telefone)
+        public Cliente(string cpf, string nome, string endereco, string telefone)
         {
             Cpf = cpf;
             Nome = nome;
@@ -21,7 +21,7 @@ namespace PlannerAPI
             return $"Cliente: {Nome}, Endereço: {Endereco}, Telefone: {Telefone}";
         }
 
-        
+
         
 
     }
