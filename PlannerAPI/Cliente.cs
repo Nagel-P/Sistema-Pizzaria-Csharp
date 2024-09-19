@@ -21,6 +21,7 @@ namespace PlannerAPI
             return $"Cliente: {Nome}, Endereço: {Endereco}, Telefone: {Telefone}";
         }
         
-
+        
+        
     }
 }
