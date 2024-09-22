@@ -1,0 +1,122 @@
+### Get all pizzas
+GET http://localhost:5208/pizzas
+Accept: application/json
+
+###
+
+### Get pizza by id
+GET http://localhost:5208/pizzas/1
+Accept: application/json
+
+###
+
+### Create a new pizza
+POST http://localhost:5208/pizzas
+Content-Type: application/json
+
+{
+  "nome": "Pizza Margherita",
+  "preco": 35.99,
+  "tamanho": "Média"
+}
+
+###
+
+### Update an existing pizza
+PUT http://localhost:5208/pizzas/1
+Content-Type: application/json
+
+{
+  "nome": "Pizza Quatro Queijos",
+  "preco": 42.99,
+  "tamanho": "Grande"
+}
+
+###
+
+### Delete a pizza
+DELETE http://localhost:5208/pizzas/1
+
+###
+
+### Get all pedidos
+GET http://localhost:5208/pedidos
+Accept: application/json
+
+###
+
+### Get pedido by id
+GET http://localhost:5208/pedidos/1
+Accept: application/json
+
+###
+
+### Create a new pedido
+POST http://localhost:5208/pedidos
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "pizzaId": 2,
+  "quantidade": 2,
+  "total": 71.98
+}
+
+###
+
+### Update an existing pedido
+PUT http://localhost:5208/pedidos/1
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "pizzaId": 2,
+  "quantidade": 3,
+  "total": 107.97
+}
+
+###
+
+### Delete a pedido
+DELETE http://localhost:5208/pedidos/1
+
+###
+
+### Get all clientes
+GET http://localhost:5208/clientes
+Accept: application/json
+
+###
+
+### Get cliente by id
+GET http://localhost:5208/clientes/1
+Accept: application/json
+
+###
+
+### Create a new cliente
+POST http://localhost:5208/clientes
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "telefone": "123456789",
+  "endereco": "Rua das Pizzas, 123"
+}
+
+###
+
+### Update an existing cliente
+PUT http://localhost:5208/clientes/1
+Content-Type: application/json
+
+{
+  "nome": "Maria Oliveira",
+  "telefone": "987654321",
+  "endereco": "Avenida Principal, 456"
+}
+
+###
+
+### Delete a cliente
+DELETE http://localhost:5208/clientes/1
