@@ -4028,19 +4028,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Igor\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
       "projectName": "PlannerApi",
-      "projectPath": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
-      "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-      "outputPath": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
+      "projectPath": "C:\\Users\\User\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4115,7 +4115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
