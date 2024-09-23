@@ -35,7 +35,7 @@ Content-Type: application/json
 ###
 
 ### Delete a pizza
-DELETE http://localhost:5208/pizzas/1
+DELETE http://localhost:5208/pizzas/2
 
 ###
 
