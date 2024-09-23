@@ -21,12 +21,6 @@ Responsável por gerenciar a comunicação com o banco de dados. Esta classe for
 - Executar consultas, inserções, atualizações e exclusões.
 Essencial para o armazenamento e recuperação de dados relacionados a clientes, pedidos e produtos da pizzaria.
 
-### `Bebida.cs`
-Representa uma bebida disponível no cardápio. Suas principais propriedades incluem:
-- **Id**: Identificador único.
-- **Nome**: Nome da bebida.
-- **Preço**: Valor da bebida.
-
 ### `Cliente.cs`
 Armazena as informações dos clientes da pizzaria. As propriedades principais são:
 - **Id**: Identificador único do cliente.
@@ -38,8 +32,7 @@ Armazena as informações dos clientes da pizzaria. As propriedades principais s
 Classe que gerencia os pedidos realizados. Inclui informações sobre os itens pedidos, o cliente e o status do pedido. Suas propriedades incluem:
 - **Id**: Identificador do pedido.
 - **ClienteId**: Referência ao cliente.
-- **Itens**: Lista de pizzas e bebidas no pedido.
-- **Status**: Status atual do pedido (ex.: "Em preparo", "Entregue").
+- **Itens**: Lista de pizzas no pedido.
 - **Total**: Valor total do pedido.
 
 ### `Pizza.cs`
