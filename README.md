@@ -1,54 +1,71 @@
-Sistema de Pizzaria - Descrição dos Arquivos e Classes
-Este projeto é um sistema para gerenciamento de pedidos em uma pizzaria, desenvolvido em C#. Abaixo, você encontrará uma explicação para cada arquivo e classe utilizada.
 
-Arquivos de Configuração
-appsettings.Development.json
-Este arquivo contém configurações específicas para o ambiente de desenvolvimento. Inclui detalhes de configuração como strings de conexão com o banco de dados, variáveis de ambiente, e outras propriedades necessárias para a aplicação funcionar localmente em modo de desenvolvimento.
+# Sistema de Pizzaria - Documentação
 
-appsettings.json
-É o arquivo principal de configurações da aplicação. Aqui ficam as configurações globais como strings de conexão, parâmetros de API e definições gerais. Ele é utilizado em conjunto com o appsettings.Development.json, sendo que este último tem prioridade quando rodando no modo de desenvolvimento.
+Este projeto é um sistema para gerenciamento de pedidos em uma pizzaria, desenvolvido em C#. Abaixo, você encontrará a descrição detalhada dos principais arquivos e classes utilizados no sistema.
 
-Classes
-BancoDados.cs
-Essa classe é responsável por gerenciar a comunicação com o banco de dados. Ela contém métodos para estabelecer a conexão, realizar consultas, inserções, atualizações e exclusões de registros. É essencial para o armazenamento e recuperação de informações da pizzaria, como clientes, pedidos e produtos.
+## Estrutura de Configuração
 
-Bebida.cs
-A classe Bebida representa uma bebida no sistema. Cada instância dessa classe corresponde a um item de bebida disponível no cardápio da pizzaria. A classe pode incluir propriedades como:
+### `appsettings.Development.json`
+Contém configurações específicas para o ambiente de desenvolvimento, como strings de conexão com o banco de dados, variáveis de ambiente e propriedades necessárias para executar a aplicação localmente no modo de desenvolvimento.
 
-Id: Identificador único da bebida.
-Nome: Nome da bebida.
-Preço: Valor da bebida.
-Cliente.cs
-A classe Cliente representa os clientes da pizzaria. Ela armazena as informações relevantes de cada cliente, como:
+### `appsettings.json`
+Este é o arquivo principal de configurações da aplicação. Ele inclui definições globais, como strings de conexão e parâmetros de API. Em conjunto com o `appsettings.Development.json`, este arquivo é utilizado para configurar a aplicação em diferentes ambientes, priorizando o arquivo de desenvolvimento quando o sistema estiver rodando neste modo.
 
-Id: Identificador único do cliente.
-Nome: Nome completo do cliente.
-Telefone: Número de telefone de contato.
-Endereço: Endereço de entrega para pedidos.
-Pedido.cs
-Essa classe é a representação de um pedido realizado na pizzaria. Ela gerencia todos os itens pedidos, quantidades, preços e informações de status do pedido. Propriedades típicas incluem:
+---
 
-Id: Identificador único do pedido.
-ClienteId: Referência ao cliente que fez o pedido.
-Itens: Lista de pizzas e bebidas incluídas no pedido.
-Status: Status atual do pedido (ex.: "Em preparo", "Entregue").
-Total: Valor total do pedido.
-Pizza.cs
-A classe Pizza representa uma pizza disponível no cardápio. Cada pizza pode conter propriedades como:
+## Estrutura de Classes
 
-Id: Identificador único da pizza.
-Sabor: Sabor ou combinação de sabores da pizza.
-Tamanho: Tamanho da pizza (pequena, média, grande).
-Preço: Valor da pizza.
-Arquivos de Projeto
-PlannerApi.csproj
-Este arquivo contém as definições e dependências do projeto, como referências a bibliotecas externas, versões do .NET e configurações de build. Ele é gerado e gerenciado pela IDE e controla a estrutura do projeto.
+### `BancoDados.cs`
+Responsável por gerenciar a comunicação com o banco de dados. Esta classe fornece métodos para:
+- Estabelecer conexões.
+- Executar consultas, inserções, atualizações e exclusões.
+Essencial para o armazenamento e recuperação de dados relacionados a clientes, pedidos e produtos da pizzaria.
 
-PlannerApi.sln
-Arquivo de solução que organiza o projeto e outros subprojetos relacionados dentro do ambiente de desenvolvimento (Visual Studio). Ele facilita o gerenciamento de diferentes componentes e projetos em uma única interface.
+### `Bebida.cs`
+Representa uma bebida disponível no cardápio. Suas principais propriedades incluem:
+- **Id**: Identificador único.
+- **Nome**: Nome da bebida.
+- **Preço**: Valor da bebida.
 
-Program.cs
-Este arquivo é o ponto de entrada da aplicação. Ele contém a função Main, onde a aplicação é inicializada. Em sistemas baseados em API, como uma aplicação ASP.NET Core, ele configura os serviços, o pipeline de requisições HTTP e inicializa o servidor web.
+### `Cliente.cs`
+Armazena as informações dos clientes da pizzaria. As propriedades principais são:
+- **Id**: Identificador único do cliente.
+- **Nome**: Nome completo.
+- **Telefone**: Número de contato.
+- **Endereço**: Endereço de entrega.
 
-Requests.http
-Esse arquivo contém exemplos de requisições HTTP que podem ser usados para testar a API. Ele provavelmente possui diferentes tipos de requisições (GET, POST, PUT, DELETE), facilitando o processo de desenvolvimento e testes da API sem precisar de ferramentas externas como Postman.
+### `Pedido.cs`
+Classe que gerencia os pedidos realizados. Inclui informações sobre os itens pedidos, o cliente e o status do pedido. Suas propriedades incluem:
+- **Id**: Identificador do pedido.
+- **ClienteId**: Referência ao cliente.
+- **Itens**: Lista de pizzas e bebidas no pedido.
+- **Status**: Status atual do pedido (ex.: "Em preparo", "Entregue").
+- **Total**: Valor total do pedido.
+
+### `Pizza.cs`
+Representa uma pizza do cardápio, com as seguintes propriedades:
+- **Id**: Identificador único.
+- **Sabor**: Sabor ou combinação de sabores.
+- **Tamanho**: Tamanho da pizza (pequena, média, grande).
+- **Preço**: Valor da pizza.
+
+---
+
+## Arquivos do Projeto
+
+### `PlannerApi.csproj`
+Arquivo de projeto que define as dependências, bibliotecas externas e configurações do build. Gerenciado pela IDE, ele organiza a estrutura e dependências do projeto.
+
+### `PlannerApi.sln`
+Arquivo de solução que agrupa este e outros subprojetos relacionados. Ele facilita a gestão de diferentes componentes dentro da mesma interface de desenvolvimento, como o Visual Studio.
+
+### `Program.cs`
+Ponto de entrada da aplicação. Contém a função `Main` e é responsável pela configuração dos serviços e do pipeline de requisições HTTP. Em aplicações ASP.NET Core, ele também inicializa o servidor web.
+
+### `Requests.http`
+Arquivo com exemplos de requisições HTTP (GET, POST, PUT, DELETE) para testes da API. Ele auxilia no processo de desenvolvimento, permitindo testes rápidos sem a necessidade de ferramentas externas como o Postman.
+
+---
+
+Este README fornece uma visão clara e objetiva dos principais componentes do sistema de pizzaria. Para mais detalhes ou dúvidas sobre a implementação, consulte a documentação interna ou entre em contato com os desenvolvedores.
+
