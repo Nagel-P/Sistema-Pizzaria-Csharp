@@ -6,7 +6,7 @@
 
 /* header*/ 
 
-.container{
+.cabecalho{
     max-width: 1080px;
     margin: 0 auto;
     display: flex;
@@ -75,71 +75,135 @@ header h1{
 
 /*Formulario*/
 
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
 
+.container {
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
 
+.form-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fde3a7d7;
+  padding: 1rem;
+}
 
+.form-image img {
+  width: 100%;
+  max-width: 400px;
+}
 
-/* Estilizando a tabela */
-table {
-    margin-top: 50px;
-    margin-left: 15%;
-    width: 70%;
-    border-collapse: collapse; /* Remove o espaçamento entre as células */
+.form {
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.login-button button {
+  border: none;
+  background-color: #6c63ff;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-button button:hover {
+  background-color: #6b63fff1;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-box {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.input-box input {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 1px 1px 6px #0000001c;
+}
+
+.input-box input:focus {
+  outline: 1px solid #6c63ff;
+}
+
+.cadastro-button button {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  background-color: #6c63ff;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.cadastro-button button:hover {
+  background-color: #6b63fff1;
+}
+
+@media screen and (max-width: 1330px) {
+  .form-image {
+    display: none;
   }
-  
-  /* Borda para toda a tabela */
-  table, th, td {
-    border: 1px solid #333; /* Define uma borda em volta da tabela, células e cabeçalhos */
-  }
-  
-  /* Estilo do cabeçalho */
-  th {
-    background-color: #f4f4f4;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  /* Estilo das células */
-  td {
-    padding: 8px;
-    text-align: center;
-  }
-  
-  /* Alternando a cor das linhas */
-  tr:nth-child(even) {
-    background-color: #f9f9f9; /* Cor de fundo das linhas pares */
+
+  .container {
+    width: 50%;
   }
 
-  button {
-    
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0 5px; /* Espaçamento entre os botões */
+  .form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .container {
+    width: 90%;
+    height: auto;
   }
 
-  button.remove {
-    background-color: #e74c3c;
-    transition: background-color 0.3 ease;
-    margin-left: 50px;
-    margin-top: 5px;
+  .input-group {
+    flex-direction: column;
   }
-
-  button.remove:hover{
-    background-color: #c0392b;
-  }
-
-  button.edit{
-    background-color: #3498db;
-    transition: background-color 0.3 ease;
-  }
-
-  button.edit:hover{
-    background-color: #2980b9;
-  }
-  
-
-
+}
