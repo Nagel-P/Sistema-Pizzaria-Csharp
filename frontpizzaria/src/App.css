@@ -169,7 +169,7 @@ header h1{
 
 .cadastro-button button {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.6rem;
   border: none;
   background-color: #6c63ff;
   color: #fff;
@@ -181,6 +181,51 @@ header h1{
 
 .cadastro-button button:hover {
   background-color: #6b63fff1;
+}
+
+.function-button{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 5px;
+}
+
+.editar-button button{
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 10px;
+  background-color: powderblue;
+  border: none;
+  cursor: pointer;
+}
+
+.editar-button button:hover{
+  background-color: royalblue;
+  color: #fff;
+}
+
+.remover-button button{
+  width: 97%;
+  padding: 0.5rem;
+  margin: 10px;
+  background-color: crimson;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.remover-button button:hover{
+  background-color: red;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
 @media screen and (max-width: 1330px) {
