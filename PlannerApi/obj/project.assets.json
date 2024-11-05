@@ -4033,11 +4033,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "projectUniqueName": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
       "projectName": "PlannerApi",
-      "projectPath": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "projectPath": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
       "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-      "outputPath": "C:\\Engenharia de Software\\C Sharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
+      "outputPath": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
