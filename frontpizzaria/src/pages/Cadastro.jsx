@@ -3,12 +3,118 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Cadastro() {
-  return (
-    <div>
-      {Formulario()}
-    </div>
+ 
+const[cliente, setCLiente] = useState(null);
+const[clientes, setClientes] = useState([]);
+
+/* function listarClientes() {
+  axios.get("http://localhost:5208/clientes")
+  .then(
+    (resposta) => {
+      console.log(resposta.data);
+      setClientes(resposta.data);
+    }
+  );
+}*/
+
+function listarClientes() {
+  axios.get("http://localhost:5208/clientes")
+    .then((resposta) => {
+      if (Array.isArray(resposta.data)) {
+        setClientes(resposta.data);
+      } else {
+        console.error("Formato inesperado na resposta da API:", resposta.data);
+      }
+    })
+    .catch((erro) => {
+      console.error("Erro ao listar clientes:", erro);
+    });
+}
+
+useEffect(listarClientes, []);
+
+function excluir(id){
+  axios.delete("http://localhost:5208/clientes/" + id).then(
+    ()=>{
+      listarClientes();
+    }
   );
 }
+
+function editar(cliente){
+  console.log("editar " + cliente.id + " " + cliente.nome);
+  setCLiente({
+      id : cliente.id,
+      nome : cliente.descricao,
+      telefone: cliente.telefone,
+      endereco : cliente.endereco
+  });
+}
+
+function Linha(index, cliente){
+  return (
+    <tr key={index}>
+      <td>{cliente.id}</td>
+      <td>{cliente.nome}</td>
+      <td>{cliente.telefone}</td>
+      <td>{cliente.endereco}</td>
+      <td>
+        <button onClick={() =>{
+          excluir(cliente.id);
+        }}> Excluir </button>
+
+        <button onClick={() => {
+          editar(cliente);
+        }}> Editar</button>
+      </td>
+    </tr>
+  );
+}
+
+/* function Linhas(clientes){
+  const linhas = [];
+  for (let i = 0; i < clientes.length; i++) {
+    const cliente = clientes [i];
+    linhas[i] = Linha(i, cliente)
+  }
+  return linhas;
+}*/
+
+function Linhas(clientes) {
+  const linhas = [];
+  // Verificar se clientes é um array válido
+  if (Array.isArray(clientes) && clientes.length > 0) {
+    for (let i = 0; i < clientes.length; i++) {
+      const cliente = clientes[i];
+      linhas.push(Linha(i, cliente));
+    }
+  }
+  return linhas;
+}
+
+
+function cancelar() {
+  setCLiente(null)
+}
+
+function aoDigitar(e) {
+  const { name, value } = e.target;  // Desestruturação do nome e valor do campo
+  setCLiente(prevCliente => ({
+    ...prevCliente, // Mantém os outros campos do cliente
+    [name]: value // Atualiza o campo que foi alterado
+  }));
+}
+
+
+function salvar(){
+  if(cliente.id){
+    axios.put("http://localhost:5208/clientes/" + cliente.id, cliente).then(() =>listarClientes());
+  }
+  else{
+    axios.post("http://localhost:5208/clientes/", cliente).then(() =>listarClientes());
+  }
+}
+
 
 function Formulario() {
 return (
@@ -24,51 +130,29 @@ return (
                 <div className="title">
                   <h1>Cadastro de clientes</h1>
                 </div>
-
-                  <div className="login-button">
-                  <button><a href=""></a>Pesquisar</button>
-                </div>
               </div>
 
               <div className="input-group">
                 <div className="input-box">
                   <label htmlFor="nome">Nome completo:</label>
-                  <input type="text" id="nome" placeholder="Digite o seu nome completo" required />
-                </div>
-
-                <div className="input-box">
-                  <label htmlFor="cpf">CPF:</label>
-                  <input type="text" name="cpf" id="cpf" placeholder="Digite o seu CPF" required />
-                </div>
-
-                <div className="input-box">
-                  <label htmlFor="endereco">Endereço:</label>
-                  <input type="text" name="endereco" id="endereco" placeholder="Digite seu endereço" required />
+                  <input type="text" id="nome" name="nome" placeholder="Digite o seu nome completo" value={cliente.nome} onChange={aoDigitar} required />
                 </div>
 
                 <div className="input-box">
                   <label htmlFor="telefone">Telefone:</label>
-                  <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required />
+                  <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" value={cliente.telefone} onChange={aoDigitar} required />
                 </div>
 
                 <div className="input-box">
-                  <label htmlFor="email">E-mail:</label>
-                  <input type="email" id="email" placeholder="Digite o seu e-mail" required />
+                  <label htmlFor="endereco">Endereço:</label>
+                  <input type="text" id="endereco" name="endereco" placeholder="Digite o seu endereço" value={cliente.endereco} onChange={aoDigitar} required />
                 </div>
 
-                <div className="input-box">
-                  <label htmlFor="senha">Senha:</label>
-                  <input type="password" id="senha" placeholder="Digite a sua senha" required />
-                </div>
-
-                <div className="input-box">
-                  <label htmlFor="confirmarSenha">Confirme sua senha:</label>
-                  <input type="password" id="confirmarSenha" placeholder="Digite a sua senha" required />
-                </div>
               </div>
 
               <div className="cadastro-button">
-                <button type="submit">Cadastrar</button>
+                <button type="button" onClick={salvar}>Cadastrar</button>
+                <button onClick={cancelar}>Cancelar</button>
               </div>
 
               <div class="function-button">
@@ -80,34 +164,61 @@ return (
                 <button>Remover</button>
               </div>
               </div>
-
-              <div className="table-cadastro">
-                <table>
-                  <tr>
-                   <th>Nome</th>
-                   <th>CPF</th>
-                   <th>Endereço</th>
-                   <th>Telefone</th>
-                   <th>E-mail</th>
-                   </tr>
-
-                   <tr>
-                    <td>Igor Mordaski</td>
-                    <td>063.670.509-90</td>
-                    <td>Rua Teofilo Freitas</td>
-                    <td>41 98574-8925</td>
-                    <td>igormordaski@gmail.com</td>
-                   </tr>
-
-                </table>
-              </div>
-            </form>
+              </form>
           </div>
         </div>
       </div>
-      
       );
     }
+
+    function novoCliente() {
+      setCLiente(
+        {
+          nome: "",
+          cpf : "",
+          telefone : "",
+          email : ""
+        }
+      )
+    }
+
+      function Tabela() {
+        return (
+              <>
+                <div className="login-button">
+                <button onClick={novoCliente}>Novo Cliente</button>
+                <table>
+                  <tr>
+                    <th>ID</th>
+                   <th>Nome</th>
+              
+                   <th>Telefone</th>
+                   <th>Endereço</th>
+                   </tr>
+                  {Linhas(clientes)}
+
+                </table>
+              </div>
+                </>
+              )
+            }
+
+        function conteudoPrincipal() {
+          if (cliente == null) {
+            return Tabela(clientes);
+          }else{
+            return Formulario();
+          }
+        }
+
+        return(
+          <div>
+            {conteudoPrincipal()}
+          </div>
+        )
+        
+          }
+      
 
 
 export default Cadastro;
