@@ -15,7 +15,7 @@ POST http://localhost:5208/pizzas
 Content-Type: application/json
 
 {
-  "nome": "Pizza Margherita",
+  "nome": "Pizza Chocolate",
   "preco": 35.99,
   "tamanho": "Média"
 }
@@ -23,7 +23,7 @@ Content-Type: application/json
 ###
 
 ### Update an existing pizza
-PUT http://localhost:5208/pizzas/1
+PUT http://localhost:5208/pizzas/5
 Content-Type: application/json
 
 {
@@ -107,7 +107,7 @@ Content-Type: application/json
 ###
 
 ### Update an existing cliente
-PUT http://localhost:5208/clientes/1
+PUT http://localhost:5208/clientes/7
 Content-Type: application/json
 
 {

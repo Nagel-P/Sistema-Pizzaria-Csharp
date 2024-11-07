@@ -10,7 +10,14 @@ builder.Services.AddSwaggerGen();
 // Configuração do Entity Framework para usar MySQL
 builder.Services.AddDbContext<AppDbContext>();
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseCors(builder => builder
+.AllowAnyOrigin()
+.AllowAnyHeader()
+.AllowAnyMethod());
 
 // Habilitar Swagger
 app.UseSwagger();
