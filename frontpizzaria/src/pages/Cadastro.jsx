@@ -1,128 +1,96 @@
-import { Form } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Cadastro() {
- 
-const[cliente, setCLiente] = useState(null);
-const[clientes, setClientes] = useState([]);
+  const [cliente, setCliente] = useState(null);
+  const [clientes, setClientes] = useState([]);
+  const [filtro, setFiltro] = useState("");
 
-/* function listarClientes() {
-  axios.get("http://localhost:5208/clientes")
-  .then(
-    (resposta) => {
-      console.log(resposta.data);
-      setClientes(resposta.data);
-    }
-  );
-}*/
+  function listarClientes() {
+    axios.get("http://localhost:5208/clientes")
+      .then((resposta) => {
+        if (Array.isArray(resposta.data)) {
+          setClientes(resposta.data);
+        } else {
+          console.error("Formato inesperado na resposta da API:", resposta.data);
+        }
+      })
+      .catch((erro) => {
+        console.error("Erro ao listar clientes:", erro);
+      });
+  }
 
-function listarClientes() {
-  axios.get("http://localhost:5208/clientes")
-    .then((resposta) => {
-      if (Array.isArray(resposta.data)) {
-        setClientes(resposta.data);
-      } else {
-        console.error("Formato inesperado na resposta da API:", resposta.data);
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao listar clientes:", erro);
-    });
-}
+  useEffect(listarClientes, []);
 
-useEffect(listarClientes, []);
-
-function excluir(id){
-  axios.delete("http://localhost:5208/clientes/" + id).then(
-    ()=>{
+  function excluir(id) {
+    axios.delete("http://localhost:5208/clientes/" + id).then(() => {
       listarClientes();
-    }
-  );
-}
+    });
+  }
 
-function editar(cliente){
-  console.log("editar " + cliente.id + " " + cliente.nome);
-  setCLiente({
-      id : cliente.id,
-      nome : cliente.descricao,
+  function editar(cliente) {
+    console.log("editar " + cliente.id + " " + cliente.nome);
+    setCliente({
+      id: cliente.id,
+      nome: cliente.nome,
       telefone: cliente.telefone,
-      endereco : cliente.endereco
-  });
-}
-
-function Linha(index, cliente){
-  return (
-    <tr key={index}>
-      <td>{cliente.id}</td>
-      <td>{cliente.nome}</td>
-      <td>{cliente.telefone}</td>
-      <td>{cliente.endereco}</td>
-      <td>
-        <button onClick={() =>{
-          excluir(cliente.id);
-        }}> Excluir </button>
-
-        <button onClick={() => {
-          editar(cliente);
-        }}> Editar</button>
-      </td>
-    </tr>
-  );
-}
-
-/* function Linhas(clientes){
-  const linhas = [];
-  for (let i = 0; i < clientes.length; i++) {
-    const cliente = clientes [i];
-    linhas[i] = Linha(i, cliente)
+      endereco: cliente.endereco
+    });
   }
-  return linhas;
-}*/
 
-function Linhas(clientes) {
-  const linhas = [];
-  // Verificar se clientes é um array válido
-  if (Array.isArray(clientes) && clientes.length > 0) {
-    for (let i = 0; i < clientes.length; i++) {
-      const cliente = clientes[i];
-      linhas.push(Linha(i, cliente));
+  function Linha(index, cliente) {
+    return (
+      <tr key={index}>
+        <td>{cliente.id}</td>
+        <td>{cliente.nome}</td>
+        <td>{cliente.telefone}</td>
+        <td>{cliente.endereco}</td>
+        <td>
+          <button onClick={() => excluir(cliente.id)}>Excluir</button>
+          <button onClick={() => editar(cliente)}>Editar</button>
+        </td>
+      </tr>
+    );
+  }
+
+  function Linhas(clientes) {
+    const linhas = [];
+    if (Array.isArray(clientes) && clientes.length > 0) {
+      for (let i = 0; i < clientes.length; i++) {
+        const cliente = clientes[i];
+        linhas.push(Linha(i, cliente));
+      }
+    }
+    return linhas;
+  }
+
+  function pesquisar() {
+    setCliente(null);
+  }
+
+  function aoDigitar(e) {
+    const { name, value } = e.target;
+    setCliente(prevCliente => ({
+      ...prevCliente,
+      [name]: value
+    }));
+  }
+
+  function salvar() {
+    if (cliente.id) {
+      axios.put("http://localhost:5208/clientes/" + cliente.id, cliente).then(() => listarClientes());
+    } else {
+      axios.post("http://localhost:5208/clientes/", cliente).then(() => listarClientes());
     }
   }
-  return linhas;
-}
 
-
-function cancelar() {
-  setCLiente(null)
-}
-
-function aoDigitar(e) {
-  const { name, value } = e.target;  // Desestruturação do nome e valor do campo
-  setCLiente(prevCliente => ({
-    ...prevCliente, // Mantém os outros campos do cliente
-    [name]: value // Atualiza o campo que foi alterado
-  }));
-}
-
-
-function salvar(){
-  if(cliente.id){
-    axios.put("http://localhost:5208/clientes/" + cliente.id, cliente).then(() =>listarClientes());
-  }
-  else{
-    axios.post("http://localhost:5208/clientes/", cliente).then(() =>listarClientes());
-  }
-}
-
-
-function Formulario() {
-return (
-    <div class="form-wrapper">
-      <div className="container">
-        <div className="form-image">
-          <img src="logoCadastro.jpg" alt="Logo de Cadastro" />
-        </div>
+  function Formulario() {
+    return (
+      <div className="form-wrapper">
+        <div className="container">
+          <div className="form-image">
+            <img src="logoCadastro.jpg" alt="Logo de Cadastro" />
+          </div>
 
           <div className="form">
             <form action="#">
@@ -147,78 +115,86 @@ return (
                   <label htmlFor="endereco">Endereço:</label>
                   <input type="text" id="endereco" name="endereco" placeholder="Digite o seu endereço" value={cliente.endereco} onChange={aoDigitar} required />
                 </div>
-
               </div>
 
               <div className="cadastro-button">
                 <button type="button" onClick={salvar}>Cadastrar</button>
-                <button onClick={cancelar}>Cancelar</button>
+                <button type="button" onClick={pesquisar}>Pesquisar clientes</button>
               </div>
-
-              <div class="function-button">
-              <div className="editar-button">
-                <button type="submit">Editar</button>
-              </div>
-
-              <div className="remover-button">
-                <button>Remover</button>
-              </div>
-              </div>
-              </form>
+            </form>
           </div>
         </div>
       </div>
-      );
+    );
+  }
+
+  function novoCliente() {
+    setCliente({
+      nome: "",
+      telefone: "",
+      endereco: ""
+    });
+  }
+
+  function filtrarClientes() {
+    if (filtro === "") {
+      return clientes;
     }
+    return clientes.filter(cliente =>
+      cliente.nome.toLowerCase().includes(filtro.toLowerCase())
+    );
+  }
 
-    function novoCliente() {
-      setCLiente(
-        {
-          nome: "",
-          cpf : "",
-          telefone : "",
-          email : ""
-        }
-      )
-    }
+  function Tabela() {
+    const clientesFiltrados = filtrarClientes();
 
-      function Tabela() {
-        return (
-              <>
-                <div className="login-button">
-                <button onClick={novoCliente}>Novo Cliente</button>
-                <table>
-                  <tr>
-                    <th>ID</th>
-                   <th>Nome</th>
-              
-                   <th>Telefone</th>
-                   <th>Endereço</th>
-                   </tr>
-                  {Linhas(clientes)}
+    return (
+      <>
+        <div className="login-button">
+          <button onClick={novoCliente}>Novo Cliente</button>
 
-                </table>
-              </div>
-                </>
-              )
-            }
-
-        function conteudoPrincipal() {
-          if (cliente == null) {
-            return Tabela(clientes);
-          }else{
-            return Formulario();
-          }
-        }
-
-        return(
-          <div>
-            {conteudoPrincipal()}
+          {/* Campo de Pesquisa */}
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Pesquisar cliente pelo nome"
+              value={filtro}
+              onChange={(e) => setFiltro(e.target.value)}
+            />
           </div>
-        )
-        
-          }
-      
 
+          {/* Tabela de Clientes */}
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Linhas(clientesFiltrados)}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+  }
+
+  function conteudoPrincipal() {
+    if (cliente == null) {
+      return Tabela();
+    } else {
+      return Formulario();
+    }
+  }
+
+  return (
+    <div>
+      {conteudoPrincipal()}
+    </div>
+  );
+}
 
 export default Cadastro;
