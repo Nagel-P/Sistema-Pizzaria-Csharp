@@ -183,50 +183,10 @@ header h1{
   background-color: #6b63fff1;
 }
 
-.function-button{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-radius: 5px;
+tr:hover {
+  background-color: #ffe6cc;
 }
 
-.editar-button button{
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 10px;
-  background-color: powderblue;
-  border: none;
-  cursor: pointer;
-}
-
-.editar-button button:hover{
-  background-color: royalblue;
-  color: #fff;
-}
-
-.remover-button button{
-  width: 97%;
-  padding: 0.5rem;
-  margin: 10px;
-  background-color: crimson;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-.remover-button button:hover{
-  background-color: red;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
 
 @media screen and (max-width: 1330px) {
   .form-image {
@@ -253,61 +213,103 @@ th, td {
   }
 }
 
-
-
-.search-box {
-  margin-bottom: 20px;
+.titulo-clientes {
   text-align: center;
-}
-
-.search-box input {
-  padding: 8px;
-  width: 80%;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.clientes-table {
-  width: 100%;
-  border-collapse: collapse;
   margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-.clientes-table th, .clientes-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+.barra-pesquisa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  width: 80%; 
 }
 
-.clientes-table th {
-  background-color: #f4f4f4;
-  color: #333;
+.barra-pesquisa input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-.clientes-table tr:nth-child(even) {
+.novo-cliente-btn {
+  padding: 10px 20px;
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.novo-cliente-btn:hover {
+  background-color: #5a37a3;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+/* Estilos para a tabela */
+table {
+  width: 80%; 
+  border-collapse: collapse;
   background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.clientes-table tr:hover {
-  background-color: #f1f1f1;
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-.clientes-table button {
-  margin: 0 5px;
-  padding: 5px 10px;
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+
+td .edit-btn, td .delete-btn {
+  padding: 10px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  margin-right: 8px;
 }
 
-.clientes-table .excluir-button {
-  background-color: #ff4c4c;
-  color: white;
+
+td .edit-btn {
+  background-color: #5bc0de;
+  color: #fff;
+  transition: background-color 0.3s;
 }
 
-.clientes-table .editar-button {
-  background-color: #4caf50;
-  color: white;
+td .edit-btn:hover {
+  background-color: #46b8da;
 }
+
+
+td .delete-btn {
+  background-color: #d9534f;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+td .delete-btn:hover {
+  background-color: #c9302c;
+}
+
