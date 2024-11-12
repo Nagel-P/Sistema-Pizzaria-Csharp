@@ -46,8 +46,8 @@ function Cadastro() {
         <td>{cliente.telefone}</td>
         <td>{cliente.endereco}</td>
         <td>
-          <button onClick={() => excluir(cliente.id)}>Excluir</button>
-          <button onClick={() => editar(cliente)}>Editar</button>
+          <button className="delete-btn" onClick={() => excluir(cliente.id)}>Excluir</button>
+          <button className="edit-btn" onClick={() => editar(cliente)}>Editar</button>
         </td>
       </tr>
     );
@@ -150,20 +150,25 @@ function Cadastro() {
 
     return (
       <>
+
+      <h2 className="titulo-clientes">Clientes Cadastrados</h2>
+
         <div className="login-button">
-          <button onClick={novoCliente}>Novo Cliente</button>
+          
 
           {/* Campo de Pesquisa */}
-          <div className="search-box">
+          <div className="barra-pesquisa">
             <input
               type="text"
               placeholder="Pesquisar cliente pelo nome"
               value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}
-            />
+              onChange={(e) => setFiltro(e.target.value)}/>
+
+              <button onClick={novoCliente}>Novo Cliente</button>
           </div>
 
           {/* Tabela de Clientes */}
+          <div class="table-container">
           <table>
             <thead>
               <tr>
@@ -171,6 +176,7 @@ function Cadastro() {
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Endereço</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -178,6 +184,7 @@ function Cadastro() {
             </tbody>
           </table>
         </div>
+      </div>
       </>
     );
   }

@@ -1,10 +1,10 @@
 import "../App.css";
-import HeaderApp from "./Header";
+import Header from "./Header";
 
 function Layout(props) {
   return (
     <>
-      
+      <Header/>
       <main class="content">{props.children}</main>
     </>
   );
