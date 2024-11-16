@@ -15,9 +15,9 @@ builder.Services.AddCors();
 var app = builder.Build();
 
 app.UseCors(builder => builder
-.AllowAnyOrigin()
-.AllowAnyHeader()
-.AllowAnyMethod());
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod());
 
 // Habilitar Swagger
 app.UseSwagger();
@@ -27,12 +27,11 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "API da Pizzaria");
 
 // CRUD para a entidade Pizza
-
 app.MapGet("/pizzas", async (AppDbContext db) => await db.Pizzas.ToListAsync());
 
-app.MapGet("/pizzas/{id}", async (int id, AppDbContext db) => 
-    await db.Pizzas.FindAsync(id) is Pizza pizza 
-        ? Results.Ok(pizza) 
+app.MapGet("/pizzas/{id}", async (int id, AppDbContext db) =>
+    await db.Pizzas.FindAsync(id) is Pizza pizza
+        ? Results.Ok(pizza)
         : Results.NotFound());
 
 app.MapPost("/pizzas", async (Pizza pizza, AppDbContext db) => {
@@ -55,7 +54,8 @@ app.MapPut("/pizzas/{id}", async (int id, Pizza pizzaAlterada, AppDbContext db) 
 });
 
 app.MapDelete("/pizzas/{id}", async (int id, AppDbContext db) => {
-    if(await db.Pizzas.FindAsync(id) is Pizza pizza){
+    if (await db.Pizzas.FindAsync(id) is Pizza pizza)
+    {
         db.Pizzas.Remove(pizza);
         await db.SaveChangesAsync();
         return Results.NoContent();
@@ -65,11 +65,37 @@ app.MapDelete("/pizzas/{id}", async (int id, AppDbContext db) => {
 
 // CRUD para a entidade Pedido
 
-app.MapGet("/pedidos", async (AppDbContext db) => await db.Pedidos.ToListAsync());
+// Retorna pedidos no formato DTO
+app.MapGet("/pedidos", async (AppDbContext db) =>
+{
+    var pedidos = await db.Pedidos
+        .Include(p => p.Cliente) // Inclui o relacionamento com Cliente
+        .ToListAsync();
 
-app.MapGet("/pedidos/{id}", async (int id, AppDbContext db) => 
-    await db.Pedidos.FindAsync(id) is Pedido pedido 
-        ? Results.Ok(pedido) 
+    var pedidosDto = pedidos.Select(p => new PedidoDTO
+    {
+        Id = p.Id,
+        ClienteId = p.ClienteId,
+        NomeCliente = p.Cliente.Nome, // Nome do cliente para o front
+        PizzaId = p.PizzaId,
+        Quantidade = p.Quantidade,
+        Total = p.Total
+    }).ToList();
+
+    return Results.Ok(pedidosDto);
+});
+
+app.MapGet("/pedidos/{id}", async (int id, AppDbContext db) =>
+    await db.Pedidos.Include(p => p.Cliente).FirstOrDefaultAsync(p => p.Id == id) is Pedido pedido
+        ? Results.Ok(new PedidoDTO
+        {
+            Id = pedido.Id,
+            ClienteId = pedido.ClienteId,
+            NomeCliente = pedido.Cliente.Nome,
+            PizzaId = pedido.PizzaId,
+            Quantidade = pedido.Quantidade,
+            Total = pedido.Total
+        })
         : Results.NotFound());
 
 app.MapPost("/pedidos", async (Pedido pedido, AppDbContext db) => {
@@ -93,7 +119,8 @@ app.MapPut("/pedidos/{id}", async (int id, Pedido pedidoAlterado, AppDbContext d
 });
 
 app.MapDelete("/pedidos/{id}", async (int id, AppDbContext db) => {
-    if(await db.Pedidos.FindAsync(id) is Pedido pedido){
+    if (await db.Pedidos.FindAsync(id) is Pedido pedido)
+    {
         db.Pedidos.Remove(pedido);
         await db.SaveChangesAsync();
         return Results.NoContent();
@@ -102,12 +129,11 @@ app.MapDelete("/pedidos/{id}", async (int id, AppDbContext db) => {
 });
 
 // CRUD para a entidade Cliente
-
 app.MapGet("/clientes", async (AppDbContext db) => await db.Clientes.ToListAsync());
 
-app.MapGet("/clientes/{id}", async (int id, AppDbContext db) => 
-    await db.Clientes.FindAsync(id) is Cliente cliente 
-        ? Results.Ok(cliente) 
+app.MapGet("/clientes/{id}", async (int id, AppDbContext db) =>
+    await db.Clientes.FindAsync(id) is Cliente cliente
+        ? Results.Ok(cliente)
         : Results.NotFound());
 
 app.MapPost("/clientes", async (Cliente cliente, AppDbContext db) => {
@@ -130,7 +156,8 @@ app.MapPut("/clientes/{id}", async (int id, Cliente clienteAlterado, AppDbContex
 });
 
 app.MapDelete("/clientes/{id}", async (int id, AppDbContext db) => {
-    if(await db.Clientes.FindAsync(id) is Cliente cliente){
+    if (await db.Clientes.FindAsync(id) is Cliente cliente)
+    {
         db.Clientes.Remove(cliente);
         await db.SaveChangesAsync();
         return Results.NoContent();
@@ -140,3 +167,14 @@ app.MapDelete("/clientes/{id}", async (int id, AppDbContext db) => {
 
 // Rodar a aplicação
 app.Run();
+
+// DTO para Pedido
+public class PedidoDTO
+{
+    public int Id { get; set; }
+    public int ClienteId { get; set; }
+    public string NomeCliente { get; set; }
+    public int PizzaId { get; set; }
+    public int Quantidade { get; set; }
+    public decimal Total { get; set; }
+}
