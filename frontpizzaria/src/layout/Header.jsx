@@ -13,7 +13,7 @@ function Header() {
               <ul>
                 <li><NavLink to ="/">Cadastro</NavLink></li>
                 <li><NavLink to ="/pizzas">Pizzas</NavLink></li>
-                <li><NavLink to ="pedido">Pedidos</NavLink></li>
+                <li><NavLink to ="/pedido">Pedidos</NavLink></li>
               </ul>
             </nav>
         </div>

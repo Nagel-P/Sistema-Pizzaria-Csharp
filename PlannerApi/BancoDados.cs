@@ -9,6 +9,6 @@ public class AppDbContext : DbContext
     // Configuração do banco de dados (usando MySQL)
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseMySQL("server=localhost;database=Pizzaria;user=root;password=412410");
+        optionsBuilder.UseMySQL("server=localhost;database=pizzaria;user=root;password=SerAph#812");
     }
 }

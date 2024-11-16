@@ -312,4 +312,58 @@ td .delete-btn {
 td .delete-btn:hover {
   background-color: #c9302c;
 }
+/* Estilizando o contêiner da entrada */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
 
+/* Estilizando o rótulo */
+.input-box label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Estilizando o select */
+.input-box select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover no select */
+.input-box select:hover {
+  border-color: #888;
+  background-color: #f4f4f4;
+}
+
+/* Foco no select */
+.input-box select:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo para a opção selecionada */
+.input-box select option {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+/* Apenas para dispositivos móveis */
+@media (max-width: 768px) {
+  .input-box select {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
