@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 function Cadastro() {
   const [pedido, setPedido] = useState(null);
   const [pedidos, setPedidos] = useState([]);
+  const [clientes, setClientes] = useState([]); // Estado para armazenar a lista de clientes
   const [filtro, setFiltro] = useState("");
 
+  // Função para listar os pedidos
   function listarPedidos() {
     axios.get("http://localhost:5208/pedidos")
       .then((resposta) => {
@@ -20,7 +22,25 @@ function Cadastro() {
       });
   }
 
-  useEffect(listarPedidos, []);
+  // Função para listar os clientes
+  function listarClientes() {
+    axios.get("http://localhost:5208/clientes") // Supondo que a API de clientes esteja disponível
+      .then((resposta) => {
+        if (Array.isArray(resposta.data)) {
+          setClientes(resposta.data);
+        } else {
+          console.error("Formato inesperado na resposta da API de clientes:", resposta.data);
+        }
+      })
+      .catch((erro) => {
+        console.error("Erro ao listar clientes:", erro);
+      });
+  }
+
+  useEffect(() => {
+    listarPedidos();
+    listarClientes(); // Carregar a lista de clientes na inicialização
+  }, []);
 
   function excluir(id) {
     axios.delete("http://localhost:5208/pedidos/" + id).then(() => {
@@ -41,7 +61,7 @@ function Cadastro() {
     return (
       <tr key={index}>
         <td>{pedido.id}</td>
-        <td>{pedido.cliente}</td>
+        <td>{pedido.nomeCliente}</td>
         <td>{pedido.itens}</td>
         <td>
           <button className="delete-btn" onClick={() => excluir(pedido.id)}>Excluir</button>
@@ -75,10 +95,15 @@ function Cadastro() {
   }
 
   function salvar() {
+    const payload = {
+      id: pedido.id,
+      clienteId: pedido.cliente,
+      itens: pedido.itens,
+    }
     if (pedido.id) {
-      axios.put("http://localhost:5208/pedidos/" + pedido.id, pedido).then(() => listarPedidos());
+      axios.put("http://localhost:5208/pedidos/${pedido.id}", payload).then(() => listarPedidos());
     } else {
-      axios.post("http://localhost:5208/pedidos/", pedido).then(() => listarPedidos());
+      axios.post("http://localhost:5208/pedidos/", payload).then(() => listarPedidos());
     }
   }
 
@@ -100,13 +125,34 @@ function Cadastro() {
 
               <div className="input-group">
                 <div className="input-box">
-                  <label htmlFor="nome">Cliente:</label>
-                  <input type="text" id="nome" name="nome" placeholder="Digite o seu nome completo" value={pedido.nome} onChange={aoDigitar} required />
+                  <label htmlFor="cliente">Cliente:</label>
+                  <select
+                    id="cliente"
+                    name="cliente"
+                    value={pedido.nomeCliente}
+                    onChange={aoDigitar}
+                    required
+                  >
+                    <option value="">Selecione um cliente</option>
+                    {clientes.map((cliente) => (
+                      <option key={cliente.id} value={cliente.id}>
+                        {cliente.nome}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="input-box">
-                  <label htmlFor="telefone">Itens:</label>
-                  <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" value={pedido.telefone} onChange={aoDigitar} required />
+                  <label htmlFor="itens">Itens:</label>
+                  <input
+                    type="text"
+                    id="itens"
+                    name="itens"
+                    placeholder="Digite os itens"
+                    value={pedido.itens}
+                    onChange={aoDigitar}
+                    required
+                  />
                 </div>
 
               </div>
@@ -134,49 +180,44 @@ function Cadastro() {
       return pedidos;
     }
     return pedidos.filter(pedido =>
-      pedido.nome.toLowerCase().includes(filtro.toLowerCase())
+      pedido.cliente.toLowerCase().includes(filtro.toLowerCase())
     );
   }
 
   function Tabela() {
-    const clientesFiltrados = filtrarPedidos();
+    const pedidosFiltrados = filtrarPedidos();
 
     return (
       <>
-
-      <h2 className="titulo-pedidos">pedidos Cadastrados</h2>
+        <h2 className="titulo-pedidos">Pedidos Cadastrados</h2>
 
         <div className="login-button">
-          
-
-          {/* Campo de Pesquisa */}
           <div className="barra-pesquisa">
             <input
               type="text"
               placeholder="Pesquisar pedido pelo nome"
               value={filtro}
-              onChange={(e) => setFiltro(e.target.value)}/>
-
-              <button onClick={novoPedido}>Novo pedido</button>
+              onChange={(e) => setFiltro(e.target.value)}
+            />
+            <button onClick={novoPedido}>Novo pedido</button>
           </div>
 
-          {/* Tabela de pedidos */}
-          <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Itens</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Linhas(clientesFiltrados)}
-            </tbody>
-          </table>
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cliente</th>
+                  <th>Itens</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Linhas(pedidosFiltrados)}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
       </>
     );
   }
