@@ -85,23 +85,24 @@ app.MapGet("/pedidos", async (AppDbContext db) =>
     return Results.Ok(pedidosDto);
 });
 
-app.MapGet("/pedidos/{id}", async (int id, AppDbContext db) =>
-    await db.Pedidos.Include(p => p.Cliente).FirstOrDefaultAsync(p => p.Id == id) is Pedido pedido
-        ? Results.Ok(new PedidoDTO
-        {
-            Id = pedido.Id,
-            ClienteId = pedido.ClienteId,
-            NomeCliente = pedido.Cliente.Nome,
-            PizzaId = pedido.PizzaId,
-            Quantidade = pedido.Quantidade,
-            Total = pedido.Total
-        })
-        : Results.NotFound());
-
 app.MapPost("/pedidos", async (Pedido pedido, AppDbContext db) => {
     db.Pedidos.Add(pedido);
     await db.SaveChangesAsync();
-    return Results.Created($"/pedidos/{pedido.Id}", pedido);
+
+    // Recuperar o cliente associado para retornar o DTO completo
+    var cliente = await db.Clientes.FindAsync(pedido.ClienteId);
+
+    var pedidoDto = new PedidoDTO
+    {
+        Id = pedido.Id,
+        ClienteId = pedido.ClienteId,
+        NomeCliente = cliente?.Nome, // Nome do cliente
+        PizzaId = pedido.PizzaId,
+        Quantidade = pedido.Quantidade,
+        Total = pedido.Total
+    };
+
+    return Results.Created($"/pedidos/{pedido.Id}", pedidoDto);
 });
 
 app.MapPut("/pedidos/{id}", async (int id, Pedido pedidoAlterado, AppDbContext db) => {
