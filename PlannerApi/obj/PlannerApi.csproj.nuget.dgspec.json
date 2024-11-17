@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {}
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {}
   },
   "projects": {
-    "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+        "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
         "projectName": "PlannerApi",
-        "projectPath": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\EngenhariaSoftware\\SistemaPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
+        "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
