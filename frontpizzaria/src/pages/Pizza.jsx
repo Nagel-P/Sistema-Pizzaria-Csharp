@@ -102,13 +102,13 @@ function Cadastro() {
 
               <div className="input-group">
                 <div className="input-box">
-                  <label htmlFor="nome">Nome completo:</label>
-                  <input type="text" id="nome" name="nome" placeholder="Digite o seu nome completo" value={pizza.nome} onChange={aoDigitar} required />
+                  <label htmlFor="nome">Nome:</label>
+                  <input type="text" id="nome" name="nome" placeholder="Digite o nome da Pizza" value={pizza.nome} onChange={aoDigitar} required />
                 </div>
 
                 <div className="input-box">
                   <label htmlFor="preco">Preço:</label>
-                  <input type="tel" id="preco" name="preco" placeholder="(xx) xxxxx-xxxx" value={pizza.preco} onChange={aoDigitar} required />
+                  <input type="tel" id="preco" name="preco" placeholder="xxx" value={pizza.preco} onChange={aoDigitar} required />
                 </div>
 
                 <div className="input-box">

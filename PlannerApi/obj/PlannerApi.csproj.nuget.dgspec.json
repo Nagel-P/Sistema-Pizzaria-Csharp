@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {}
+    "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {}
   },
   "projects": {
-    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {
+    "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
         "projectName": "PlannerApi",
-        "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+        "projectPath": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,8 +36,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -61,13 +62,25 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.7.3, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -81,6 +94,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -89,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
