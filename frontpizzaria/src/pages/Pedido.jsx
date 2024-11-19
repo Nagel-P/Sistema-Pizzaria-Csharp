@@ -111,7 +111,7 @@ function Cadastro() {
     return (
       <div className="form-wrapper">
         <div className="container">
-          <div className="form-image">
+          <div className="form-image-pedido">
             <img src="logoCadastro.jpg" alt="Logo de Cadastro" />
           </div>
 
@@ -203,7 +203,7 @@ function Cadastro() {
           </div>
 
           <div className="table-container">
-            <table>
+            <table className="pedido-table">
               <thead>
                 <tr>
                   <th>ID</th>

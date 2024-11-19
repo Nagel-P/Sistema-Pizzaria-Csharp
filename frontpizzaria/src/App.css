@@ -90,12 +90,30 @@ header h1{
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.form-image {
-  width: 50%;
+.form-image-pizza {
+  width: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fde3a7d7;
+  background-color: #af4c4c;
+  padding: 1rem;
+}
+
+.form-image-pedido {
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4c87af; 
+  padding: 1rem;
+}
+
+.form-image-cadastro {
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4CAF50;
   padding: 1rem;
 }
 
@@ -274,9 +292,20 @@ th, td {
   text-align: left;
 }
 
-
-th {
+.cadastro-table th {
   background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+.pizza-table th {
+  background-color: #af4c4c;
+  color: white;
+  font-weight: bold;
+}
+
+.pedido-table th {
+  background-color: #4c87af; 
   color: white;
   font-weight: bold;
 }
