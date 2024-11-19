@@ -748,3 +748,9 @@ C:\Users\User\OneDrive\Documentos\TrabalhoPizzaria\Sistema-Pizzaria-Csharp\Plann
 C:\Users\User\OneDrive\Documentos\TrabalhoPizzaria\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\User\OneDrive\Documentos\TrabalhoPizzaria\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\User\OneDrive\Documentos\TrabalhoPizzaria\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\MySqlConnector.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\C#\Sistema-Pizzaria-Csharp\Sistema-Pizzaria-Csharp\PlannerApi\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll

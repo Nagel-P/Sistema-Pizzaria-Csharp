@@ -57,7 +57,7 @@ Content-Type: application/json
 
 {
   "clienteId": 1,
-  "pizzaId": 2,
+  "pizzaId": 1,
   "quantidade": 2,
   "total": 71.98
 }

@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 function Cadastro() {
   const [pedido, setPedido] = useState(null);
   const [pedidos, setPedidos] = useState([]);
-  const [clientes, setClientes] = useState([]); // Estado para armazenar a lista de clientes
+  const [clientes, setClientes] = useState([]);
+  const [pizzas, setPizzas] = useState([]); // Estado para armazenar a lista de clientes
   const [filtro, setFiltro] = useState("");
 
   // Função para listar os pedidos
@@ -37,9 +38,25 @@ function Cadastro() {
       });
   }
 
+  // Função para listar as pizzas
+  function listarPizzas() {
+    axios.get("http://localhost:5208/pizzas") // Supondo que a API de pizzas esteja disponível
+      .then((resposta) => {
+        if (Array.isArray(resposta.data)) {
+          setPizzas(resposta.data);
+        } else {
+          console.error("Formato inesperado na resposta da API de pizzas:", resposta.data);
+        }
+      })
+      .catch((erro) => {
+        console.error("Erro ao listar pizzas:", erro);
+      });
+  }
+
   useEffect(() => {
     listarPedidos();
     listarClientes(); // Carregar a lista de clientes na inicialização
+    listarPizzas(); // Carregar a lista de pizzas na inicialização
   }, []);
 
   function excluir(id) {
@@ -53,7 +70,7 @@ function Cadastro() {
     setPedido({
       id: pedido.id,
       cliente: pedido.cliente,
-      itens: pedido.itens,
+      pizza: pedido.pizza,
     });
   }
 
@@ -62,7 +79,7 @@ function Cadastro() {
       <tr key={index}>
         <td>{pedido.id}</td>
         <td>{pedido.nomeCliente}</td>
-        <td>{pedido.itens}</td>
+        <td>{pedido.nomePizza}</td>
         <td>
           <button className="delete-btn" onClick={() => excluir(pedido.id)}>Excluir</button>
           <button className="edit-btn" onClick={() => editar(pedido)}>Editar</button>
@@ -98,7 +115,7 @@ function Cadastro() {
     const payload = {
       id: pedido.id,
       clienteId: pedido.cliente,
-      itens: pedido.itens,
+      pizzaId: pedido.pizza,
     }
     if (pedido.id) {
       axios.put("http://localhost:5208/pedidos/${pedido.id}", payload).then(() => listarPedidos());
@@ -141,18 +158,25 @@ function Cadastro() {
                     ))}
                   </select>
                 </div>
+                </div>
 
+                <div className="input-group">
                 <div className="input-box">
-                  <label htmlFor="itens">Itens:</label>
-                  <input
-                    type="text"
-                    id="itens"
-                    name="itens"
-                    placeholder="Digite os itens"
-                    value={pedido.itens}
+                  <label htmlFor="pizza">Pizza:</label>
+                  <select
+                    id="pizza"
+                    name="pizza"
+                    value={pedido.nomePizza}
                     onChange={aoDigitar}
                     required
-                  />
+                  >
+                    <option value="">Selecione uma pizza</option>
+                    {pizzas.map((pizza) => (
+                      <option key={pizza.id} value={pizza.id}>
+                        {pizza.nome}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
               </div>
@@ -171,7 +195,7 @@ function Cadastro() {
   function novoPedido() {
     setPedido({
       cliente: "",
-      itens: "",
+      pizza: "",
     });
   }
 
@@ -208,7 +232,7 @@ function Cadastro() {
                 <tr>
                   <th>ID</th>
                   <th>Cliente</th>
-                  <th>Itens</th>
+                  <th>Pizza</th>
                   <th>Ações</th>
                 </tr>
               </thead>

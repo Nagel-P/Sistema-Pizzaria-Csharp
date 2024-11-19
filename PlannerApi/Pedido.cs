@@ -4,6 +4,7 @@ public class Pedido
     public int ClienteId { get; set; }
     public Cliente Cliente { get; set; }
     public int PizzaId { get; set; }
+    public Pizza Pizza { get; set; }
     public int Quantidade { get; set; }
     public decimal Total { get; set; }
 }
