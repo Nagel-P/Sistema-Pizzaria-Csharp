@@ -70,6 +70,7 @@ app.MapGet("/pedidos", async (AppDbContext db) =>
 {
     var pedidos = await db.Pedidos
         .Include(p => p.Cliente) // Inclui o relacionamento com Cliente
+        .Include(p => p.Pizza)
         .ToListAsync();
 
     var pedidosDto = pedidos.Select(p => new PedidoDTO
@@ -78,6 +79,7 @@ app.MapGet("/pedidos", async (AppDbContext db) =>
         ClienteId = p.ClienteId,
         NomeCliente = p.Cliente.Nome, // Nome do cliente para o front
         PizzaId = p.PizzaId,
+        NomePizza = p.Pizza.Nome,
         Quantidade = p.Quantidade,
         Total = p.Total
     }).ToList();
@@ -91,6 +93,7 @@ app.MapPost("/pedidos", async (Pedido pedido, AppDbContext db) => {
 
     // Recuperar o cliente associado para retornar o DTO completo
     var cliente = await db.Clientes.FindAsync(pedido.ClienteId);
+    var pizza = await db.Pizzas.FindAsync(pedido.PizzaId);
 
     var pedidoDto = new PedidoDTO
     {
@@ -98,6 +101,7 @@ app.MapPost("/pedidos", async (Pedido pedido, AppDbContext db) => {
         ClienteId = pedido.ClienteId,
         NomeCliente = cliente?.Nome, // Nome do cliente
         PizzaId = pedido.PizzaId,
+        NomePizza = pizza?.Nome,
         Quantidade = pedido.Quantidade,
         Total = pedido.Total
     };
@@ -176,6 +180,7 @@ public class PedidoDTO
     public int ClienteId { get; set; }
     public string NomeCliente { get; set; }
     public int PizzaId { get; set; }
+    public string NomePizza { get; set; }
     public int Quantidade { get; set; }
     public decimal Total { get; set; }
 }

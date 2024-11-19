@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "j+djC9exfReAlsa2gEdIihitpCy/EAQKCDSlw+WFbnQ=",
+  "Hash": "w4ssx0nlnqwk+q7oNwNhBPO01RNH7HePwjW1mqBF7bs=",
   "Source": "PlannerApi",
   "BasePath": "_content/PlannerApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

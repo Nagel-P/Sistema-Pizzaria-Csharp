@@ -4110,11 +4110,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
       "projectName": "PlannerApi",
-      "projectPath": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
+      "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\PlannerApi.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive\\Documentos\\TrabalhoPizzaria\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
+      "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\C#\\Sistema-Pizzaria-Csharp\\Sistema-Pizzaria-Csharp\\PlannerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4139,9 +4139,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -4197,24 +4196,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.11, 8.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.11, 8.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.11, 8.0.11]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.11, 8.0.11]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4223,7 +4204,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
